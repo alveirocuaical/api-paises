@@ -13,7 +13,11 @@ class DepartamentoController extends Controller
      */
     public function index(int $pais) : Response
     {
-        return new Response(Departamento::where('pais_id', $pais)->get(), Response::HTTP_OK);
+        return new Response(
+            Departamento::where('pais_id', $pais)
+                            ->orderBy('nombre', 'asc')
+                            ->get(),
+                            Response::HTTP_OK);
     }
 
     /**

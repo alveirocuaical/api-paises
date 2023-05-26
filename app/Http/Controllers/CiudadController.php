@@ -13,7 +13,10 @@ class CiudadController extends Controller
      */
     public function index(int $departamento): Response
     {
-        return new Response(Ciudad::where('departamento_id', $departamento)->get(), Response::HTTP_OK);
+        return new Response(Ciudad::where('departamento_id', $departamento)
+                                    ->orderBy('nombre', 'asc')
+                                    ->get(),
+                                    Response::HTTP_OK);
     }
 
     /**
